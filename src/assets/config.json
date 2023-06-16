@@ -1,0 +1,209 @@
+{
+  "fileBasePath": "",
+  "preferCanvas": false,
+  "view": {
+    "center": [51, -116],
+    "zoom": 9
+  },
+  "imports": {
+    "gwf-default.sqlite-local-data-provider": "https://gwf-vis.usask.ca/plugins/default/sqlite-local-data-provider.plugin.js",
+    "gwf-default.tile-layer": "https://gwf-vis.usask.ca/plugins/default/tile-layer.plugin.js",
+    "gwf-default.geojson-layer": "https://gwf-vis.usask.ca/plugins/default/geojson-layer.plugin.js",
+    "gwf-default.legend": "https://gwf-vis.usask.ca/plugins/default/legend.plugin.js",
+    "gwf-default.data-control": "https://gwf-vis.usask.ca/plugins/default/data-control.plugin.js",
+    "gwf-default.metadata": "https://gwf-vis.usask.ca/plugins/default/metadata.plugin.js",
+    "gwf-prairie-water.chart": "/src/plugins/chart.plugin.ts"
+  },
+  "plugins": [
+    {
+      "import": "gwf-default.sqlite-local-data-provider",
+      "container": ""
+    },
+    {
+      "import": "gwf-default.metadata",
+      "container": "sidebar"
+    },
+    {
+      "import": "gwf-prairie-water.chart",
+      "container": "sidebar"
+    },
+    {
+      "import": "gwf-default.legend",
+      "container": "main",
+      "props": {
+        "colorScheme": {
+          "": {
+            "type": "sequential",
+            "scheme": ["blue", "red"]
+          }
+        },
+        "dataSourceDict": {
+          "prairie-water": "sqlite-local:https://gwf-vis.usask.ca/v1/api/file/fetch/public/datasets/prairie-water-2005.gwfvisdb"
+        }
+      }
+    },
+    {
+      "import": "gwf-default.data-control",
+      "container": "main",
+      "props": {
+        "header": "My Data Control",
+        "dataSources": [
+          "sqlite-local:https://gwf-vis.usask.ca/v1/api/file/fetch/public/datasets/prairie-water-2005.gwfvisdb"
+        ],
+        "dataSourceDict": {
+          "prairie-water": "sqlite-local:https://gwf-vis.usask.ca/v1/api/file/fetch/public/datasets/prairie-water-2005.gwfvisdb"
+        }
+      }
+    },
+    {
+      "import": "gwf-default.tile-layer",
+      "container": "",
+      "props": {
+        "displayName": "World_Imagery",
+        "active": true,
+        "urlTemplate": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+        "options": {
+          "attribution": "Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community"
+        }
+      }
+    },
+    {
+      "import": "gwf-default.tile-layer",
+      "container": "",
+      "props": {
+        "displayName": "World_Physical_Map",
+        "urlTemplate": "https://server.arcgisonline.com/arcgis/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}",
+        "options": {
+          "attribution": "Source: US National Park Service"
+        }
+      }
+    },
+    {
+      "import": "gwf-default.tile-layer",
+      "container": "",
+      "props": {
+        "displayName": "Insecticide_WPO_FULL",
+        "type": "overlay",
+        "urlTemplate": "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZWhzYW5tb3JhZGkyIiwiYSI6ImNsOGwwYjh2eTAwN2YzdW1rNXU1N3psZzIifQ.3YT1XFZ7BAnpAWoPgLHeeQ",
+        "options": {
+          "attribution": "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+          "id": "ehsanmoradi2/cld7zjx1y000a01mtmlwdxcy8",
+          "opacity": 0.5
+        }
+      }
+    },
+    {
+      "import": "gwf-default.tile-layer",
+      "container": "",
+      "props": {
+        "displayName": "Fungicide_WPO_FULL",
+        "type": "overlay",
+        "urlTemplate": "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZWhzYW5tb3JhZGkyIiwiYSI6ImNsOGwwYjh2eTAwN2YzdW1rNXU1N3psZzIifQ.3YT1XFZ7BAnpAWoPgLHeeQ",
+        "options": {
+          "attribution": "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+          "id": "ehsanmoradi2/cld7zx80z000l01pjcx317qdd",
+          "opacity": 0.5
+        }
+      }
+    },
+    {
+      "import": "gwf-default.tile-layer",
+      "container": "",
+      "props": {
+        "displayName": "Herbicide_WPO_FULL",
+        "type": "overlay",
+        "urlTemplate": "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZWhzYW5tb3JhZGkyIiwiYSI6ImNsOGwwYjh2eTAwN2YzdW1rNXU1N3psZzIifQ.3YT1XFZ7BAnpAWoPgLHeeQ",
+        "options": {
+          "attribution": "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+          "id": "ehsanmoradi2/cld7ztswl000601p3fuar95dk",
+          "opacity": 0.5
+        }
+      }
+    },
+    {
+      "import": "gwf-default.tile-layer",
+      "container": "",
+      "props": {
+        "displayName": "Insecticide_PUD_FULL",
+        "type": "overlay",
+        "urlTemplate": "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZWhzYW5tb3JhZGkyIiwiYSI6ImNsOGwwYjh2eTAwN2YzdW1rNXU1N3psZzIifQ.3YT1XFZ7BAnpAWoPgLHeeQ",
+        "options": {
+          "attribution": "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+          "id": "ehsanmoradi2/cld80gigc000m01pjdu0aus5v",
+          "opacity": 0.5
+        }
+      }
+    },
+    {
+      "import": "gwf-default.tile-layer",
+      "container": "",
+      "props": {
+        "displayName": "Fungicide_PUD_FULL",
+        "type": "overlay",
+        "urlTemplate": "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZWhzYW5tb3JhZGkyIiwiYSI6ImNsOGwwYjh2eTAwN2YzdW1rNXU1N3psZzIifQ.3YT1XFZ7BAnpAWoPgLHeeQ",
+        "options": {
+          "attribution": "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+          "id": "ehsanmoradi2/cld80836h000801qich4kkn90",
+          "opacity": 0.5
+        }
+      }
+    },
+    {
+      "import": "gwf-default.tile-layer",
+      "container": "",
+      "props": {
+        "displayName": "Herbicide_PUD_FULL",
+        "type": "overlay",
+        "urlTemplate": "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZWhzYW5tb3JhZGkyIiwiYSI6ImNsOGwwYjh2eTAwN2YzdW1rNXU1N3psZzIifQ.3YT1XFZ7BAnpAWoPgLHeeQ",
+        "options": {
+          "attribution": "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+          "id": "ehsanmoradi2/cld80bmkn000901qiwb8jl33r",
+          "opacity": 0.5
+        }
+      }
+    },
+    {
+      "import": "gwf-default.tile-layer",
+      "container": "",
+      "props": {
+        "displayName": "crop_wst_mm_yr",
+        "type": "overlay",
+        "urlTemplate": "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZWhzYW5tb3JhZGkyIiwiYSI6ImNsOGwwYjh2eTAwN2YzdW1rNXU1N3psZzIifQ.3YT1XFZ7BAnpAWoPgLHeeQ",
+        "options": {
+          "attribution": "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+          "id": "ehsanmoradi2/cl8xe6al2000314mrriyudeae",
+          "opacity": 0.5
+        }
+      }
+    },
+    {
+      "import": "gwf-default.tile-layer",
+      "container": "",
+      "props": {
+        "displayName": "grass_ws_mm_yr",
+        "type": "overlay",
+        "urlTemplate": "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZWhzYW5tb3JhZGkyIiwiYSI6ImNsOGwwYjh2eTAwN2YzdW1rNXU1N3psZzIifQ.3YT1XFZ7BAnpAWoPgLHeeQ",
+        "options": {
+          "attribution": "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+          "id": "ehsanmoradi2/cl8xec5u5000215nq4yqsitfm",
+          "opacity": 0.5
+        }
+      }
+    },
+    {
+      "import": "gwf-default.geojson-layer",
+      "container": "",
+      "props": {
+        "displayName": "GeoJSON",
+        "type": "overlay",
+        "active": true,
+        "colorScheme": {
+          "": {
+            "type": "sequential",
+            "scheme": ["blue", "red"]
+          }
+        }
+      }
+    }
+  ]
+}

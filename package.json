@@ -1,0 +1,20 @@
+{
+  "name": "gwf-vis-prairie-water-plugins",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "gwf-vis-host": "github:river-flow-vis/gwf-vis-host#ac00405a15fc09068aaa362b37a536fe823414aa",
+    "lit": "^2.7.2"
+  },
+  "devDependencies": {
+    "tiny-glob": "^0.2.9",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.9"
+  }
+}
