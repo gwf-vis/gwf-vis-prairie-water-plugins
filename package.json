@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "gwf-vis-host": "github:river-flow-vis/gwf-vis-host#ac00405a15fc09068aaa362b37a536fe823414aa",
+    "gwf-vis-host": "github:river-flow-vis/gwf-vis-host#6cb5f820a0759ad11e47644e4de17c463e4391d8",
     "lit": "^2.7.2"
   },
   "devDependencies": {
