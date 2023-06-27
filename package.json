@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "chart.js": "^4.3.0",
     "gwf-vis-host": "github:river-flow-vis/gwf-vis-host#6cb5f820a0759ad11e47644e4de17c463e4391d8",
     "lit": "^2.7.2"
   },
