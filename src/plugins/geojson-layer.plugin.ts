@@ -73,7 +73,7 @@ export default class GWFVisPluginPrairieWaterGeoJSONLayer
   }
   set timeStamp(value) {
     this.#timeStamp = value;
-    this.updateStyle();
+    this.updateStyle2();
   }
 
   /** This is a mandatory method to be implemented that returns the header of the plugin to be shown. */
@@ -102,6 +102,7 @@ export default class GWFVisPluginPrairieWaterGeoJSONLayer
       );
     }
     this.updateShape();
+   
   }
 
   constructor() {
@@ -164,27 +165,14 @@ export default class GWFVisPluginPrairieWaterGeoJSONLayer
 
   renderTimeControl() {
     const result = html`
-      <div id="time-control">
+      <div id="Layer Transparency">
+       
         <div>
-          Year: 1900<input
-            id="year-input"
-            type="range"
-            min="1900"
-            max="1940"
-            value="${this.timeStamp?.year}"
-            @input=${(event: Event) =>
-              (this.timeStamp = {
-                ...this.timeStamp,
-                year: +(event.currentTarget as HTMLInputElement)?.value,
-              })}
-          />1940
-        </div>
-        <div>
-          Day: 0<input
+          Watersheds Transparency: 0<input
             id="day-input"
             type="range"
             min="0"
-            max="364"
+            max="365"
             value="${this.timeStamp?.day}"
             @input=${(event: Event) =>
               (this.timeStamp = {
@@ -258,17 +246,75 @@ export default class GWFVisPluginPrairieWaterGeoJSONLayer
   async updateStyle() {
     const endLoadingDelegate = this.notifyLoadingDelegate?.();
     this.#mapLayer?.setStyle((feature: any) => {
-      const { year, day } = this.timeStamp ?? {};
-      if (year != null && day != null) {
+      //const { year, day } = this.timeStamp ?? {};
+     /* if (year != null && day != null) {
         const scalar = feature?.scalar as { data: { average: any }[][] };
+      
+
         const value = scalar?.data?.[year]?.[day]?.average;
         const min = 0;
         const max = 500;
-        const hue = ((value - min) / (max - min)) * (360 - 270) + 270;
-        const color = `hsl(${hue}, 100%, 50%)`;
-        return { fillColor: color } as any;
-      }
+        const hue = ((value - min) / (max - min)) * (360 - 270) + 270;*/
+       
+        if(feature?.data.data.LCClassNum=='1')
+        return { fillColor: '#CA6216',fillOpacity: 1.00 } as any;
+        if(feature?.data.data.LCClassNum=='2')
+        return { fillColor: '#5CB6E7',fillOpacity: 1.00 } as any;
+        if(feature?.data.data.LCClassNum=='3')
+        return { fillColor: '#EEE452',fillOpacity: 1.00 } as any;
+        if(feature?.data.data.LCClassNum=='4')
+        return { fillColor: '#E952A3',fillOpacity: 1.00 } as any;
+        if(feature?.data.data.LCClassNum=='5')
+        return { fillColor: '#3770B0',fillOpacity: 1.00 } as any;
+        if(feature?.data.data.LCClassNum=='6')
+        return { fillColor: '#4D9A74',fillOpacity: 1.00 } as any;
+        if(feature?.data.data.LCClassNum=='7')
+        return { fillColor: '#DEA123',fillOpacity: 1.00 } as any;
+        if(feature?.data.data.LCClassNum=='')
+        return { fillColor: '' } as any;
+
+
+        
+      //}
     });
     endLoadingDelegate?.();
+    
+  }
+  async updateStyle2() {
+    const endLoadingDelegate = this.notifyLoadingDelegate?.();
+    this.#mapLayer?.setStyle((feature: any) => {
+      const { day } = this.timeStamp ?? {};
+      //if (year != null && day != null) {
+        /*const scalar = feature?.scalar as { data: { average: any }[][] };
+      
+
+        const value = scalar?.data?.[year]?.[day]?.average;
+        const min = 0;
+        const max = 500;
+        const hue = ((value - min) / (max - min)) * (360 - 270) + 270;*/
+       const trans=day/365;
+        if(feature?.data.data.LCClassNum=='1')
+        return { fillColor: '#6E32A1',fillOpacity: trans } as any;
+        if(feature?.data.data.LCClassNum=='2')
+        return { fillColor: '#46ABF0',fillOpacity: trans } as any;
+        if(feature?.data.data.LCClassNum=='3')
+        return { fillColor: '#FBE68B',fillOpacity: trans } as any;
+        if(feature?.data.data.LCClassNum=='4')
+        return { fillColor: '#9A3191',fillOpacity: trans } as any;
+        if(feature?.data.data.LCClassNum=='5')
+        return { fillColor: '#A3A6A9',fillOpacity: trans } as any;
+        if(feature?.data.data.LCClassNum=='6')
+        return { fillColor: '#43AF53',fillOpacity: trans } as any;
+        if(feature?.data.data.LCClassNum=='7')
+        return { fillColor: '#F7BF2B',fillOpacity: trans } as any;
+        if(feature?.data.data.LCClassNum=='')
+        return { fillColor: '' } as any;
+
+
+        
+     // }
+    });
+    endLoadingDelegate?.();
+    
   }
 }
